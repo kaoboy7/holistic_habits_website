@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Holistic Habits - Your Digital Sanctuary</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Lexend:wght@500;600&amp;display=swap"
+                rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+                rel="stylesheet" />
+        <script id="tailwind-config">
+                tailwind.config = {
+                        darkMode: "class",
+                        theme: {
+                                extend: {
+                                        "colors": {
+                                                "surface-container-low": "#f4f4f0",
+                                                "on-secondary-container": "#766100",
+                                                "primary": "#3c6752",
+                                                "tertiary-container": "#6ca8c3",
+                                                "tertiary": "#24657e",
+                                                "secondary-fixed": "#ffe17a",
+                                                "tertiary-fixed-dim": "#93cfeb",
+                                                "primary-container": "#7daa92",
+                                                "surface": "#faf9f5",
+                                                "primary-fixed-dim": "#a2d1b7",
+                                                "on-error-container": "#93000a",
+                                                "inverse-primary": "#a2d1b7",
+                                                "inverse-on-surface": "#f2f1ed",
+                                                "on-primary": "#ffffff",
+                                                "on-primary-container": "#123f2c",
+                                                "tertiary-fixed": "#bde9ff",
+                                                "background": "#faf9f5",
+                                                "on-surface": "#1b1c1a",
+                                                "on-error": "#ffffff",
+                                                "on-primary-fixed-variant": "#244f3b",
+                                                "surface-container-lowest": "#ffffff",
+                                                "on-tertiary-fixed-variant": "#004d64",
+                                                "outline": "#717973",
+                                                "on-background": "#1b1c1a",
+                                                "on-tertiary-fixed": "#001f2a",
+                                                "surface-variant": "#e3e2df",
+                                                "outline-variant": "#c1c8c2",
+                                                "error": "#ba1a1a",
+                                                "on-surface-variant": "#414943",
+                                                "surface-container": "#efeeea",
+                                                "surface-bright": "#faf9f5",
+                                                "surface-container-high": "#e9e8e4",
+                                                "secondary": "#715c00",
+                                                "surface-tint": "#3c6752",
+                                                "surface-container-highest": "#e3e2df",
+                                                "on-secondary-fixed": "#231b00",
+                                                "on-secondary": "#ffffff",
+                                                "on-primary-fixed": "#002114",
+                                                "secondary-fixed-dim": "#e4c451",
+                                                "primary-fixed": "#beedd3",
+                                                "surface-dim": "#dbdad6",
+                                                "on-tertiary-container": "#003c4f",
+                                                "on-secondary-fixed-variant": "#554500",
+                                                "inverse-surface": "#2f312e",
+                                                "secondary-container": "#ffdd67",
+                                                "error-container": "#ffdad6",
+                                                "on-tertiary": "#ffffff"
+                                        },
+                                        "borderRadius": {
+                                                "DEFAULT": "0.25rem",
+                                                "lg": "0.5rem",
+                                                "xl": "0.75rem",
+                                                "full": "9999px"
+                                        },
+                                        "spacing": {
+                                                "stack-gap": "12px",
+                                                "section-padding": "32px",
+                                                "unit": "8px",
+                                                "gutter-card": "16px",
+                                                "margin-page": "24px"
+                                        },
+                                        "fontFamily": {
+                                                "body-md": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "h1": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "h2": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "button": [
+                                                        "Lexend"
+                                                ],
+                                                "body-lg": [
+                                                        "Plus Jakarta Sans"
+                                                ],
+                                                "label-caps": [
+                                                        "Lexend"
+                                                ]
+                                        },
+                                        "fontSize": {
+                                                "body-md": [
+                                                        "16px",
+                                                        {
+                                                                "lineHeight": "1.5",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "h1": [
+                                                        "32px",
+                                                        {
+                                                                "lineHeight": "1.2",
+                                                                "fontWeight": "700"
+                                                        }
+                                                ],
+                                                "h2": [
+                                                        "24px",
+                                                        {
+                                                                "lineHeight": "1.3",
+                                                                "fontWeight": "600"
+                                                        }
+                                                ],
+                                                "button": [
+                                                        "16px",
+                                                        {
+                                                                "lineHeight": "1.0",
+                                                                "fontWeight": "600"
+                                                        }
+                                                ],
+                                                "body-lg": [
+                                                        "18px",
+                                                        {
+                                                                "lineHeight": "1.6",
+                                                                "fontWeight": "400"
+                                                        }
+                                                ],
+                                                "label-caps": [
+                                                        "12px",
+                                                        {
+                                                                "lineHeight": "1.0",
+                                                                "letterSpacing": "0.05em",
+                                                                "fontWeight": "500"
+                                                        }
+                                                ]
+                                        }
+                                },
+                        },
+                }
+        </script>
+        <style>
+                .material-symbols-outlined {
+                        font-family: 'Material Symbols Outlined';
+                        font-weight: normal;
+                        font-style: normal;
+                        font-size: 24px;
+                        line-height: 1;
+                        letter-spacing: normal;
+                        text-transform: none;
+                        display: inline-block;
+                        white-space: nowrap;
+                        word-wrap: normal;
+                        direction: ltr;
+                        -webkit-font-feature-settings: 'liga';
+                        -webkit-font-smoothing: antialiased;
+                }
+        </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+        <!-- Top Navigation (Web) -->
+        <header
+                class="hidden md:flex bg-[#FDFCFB] dark:bg-stone-950 font-['Plus_Jakarta_Sans'] tracking-tight docked full-width top-0 border-none shadow-sm shadow-[#7DAA92]/5 flex justify-between items-center w-full px-6 py-4 z-50 sticky top-0">
+                <div class="flex items-center gap-4">
+                        <img alt="User profile photo"
+                                class="w-10 h-10 rounded-full object-cover border-2 border-primary-container"
+                                data-alt="A small, circular avatar placeholder image showing a calm, softly lit face. The image should be subtle and blend well with a light mode, sage green and parchment white color palette. Soft organic feel."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQsCJAooInIG-esKdrzvYUh119VvwgYhu2RShG8VwfBrQ6VPRsUIR6tzWyMu3VpGdibpyrfTcQ9-bKOdQGt4qVpfANk5iZBb37B6lEScTycr2ua213exvzs23bV3AXQObe1i2cKV-byD8RHT-4dHcPqSCIYT8sEiSKUtS6a56fPUsIECtJCsxKdi3dTFgR36NpvAQ-Rms0GgATSb4iqJRv7KD2FHwqOWgXnk5s_KMTOvObtQaoRjywLMpmXS6YeenvCM2W7miTIs" />
+                        <h1 class="text-xl font-semibold text-[#7DAA92] dark:text-[#9DC3AE]">Holistic Habits</h1>
+                </div>
+        </header>
+        <main class="flex-grow">
+                <!-- Hero Section -->
+                <section class="relative pt-24 pb-32 overflow-hidden px-margin-page lg:px-0">
+                        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+                                <div class="z-10 text-center lg:text-left">
+                                        <div
+                                                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-low text-primary mb-6 shadow-sm">
+                                                <span class="material-symbols-outlined text-sm"
+                                                        style="font-variation-settings: 'FILL' 1;">spa</span>
+                                                <span class="font-label-caps text-label-caps uppercase text-primary">Your
+                                                        Digital Sanctuary</span>
+                                        </div>
+                                        <h1
+                                                class="font-h1 text-h1 text-on-surface mb-6 lg:text-[48px] lg:leading-[1.1]">
+                                                Nurture Your Well-being,<br />
+                                                <span class="text-primary">One Gentle Habit at a Time.</span>
+                                        </h1>
+                                        <p
+                                                class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl mx-auto lg:mx-0">
+                                                Step away from hustle culture. Cultivate a sustainable rhythm of
+                                                self-care with organic tracking, mindful journeys, and compassionate
+                                                insights designed for your unique flow.
+                                        </p>
+                                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                                <button
+                                                        class="bg-primary text-on-primary font-button text-button px-8 py-4 rounded-full shadow-[0_4px_14px_0_rgba(60,103,82,0.39)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                                                        Start Your Journey
+                                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                                </button>
+                                        </div>
+                                </div>
+                                <div class="relative z-10 hidden lg:block">
+                                        <div
+                                                class="relative w-full aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl shadow-primary/20 border border-surface-container-highest">
+                                                <img alt="Holistic Habits Dashboard" class="w-full h-full object-cover"
+                                                        src="https://lh3.googleusercontent.com/aida/ADBb0ui05AFUuhEQ65oPN3RRnLpKCDymZ_5ZYKTn9CWLa0uaDF702DfVFHGQ19S1vauZeazzdjG0CvpSs9Ym8qxHI6O1r9MZRWvJiwfg6QAPYoduW6iF8AAdhBDRKj14Bgfzp3X83nul_u2jnjcNShKAlmDgRQ1F2oFG5jdWhZzkVQL3MmZfW9QUy81q-yY8rylzgSzg0NKVr-fyb-vvkyNZ7hTSTu7m5223Tjt8rlgMFg7Kjr-Gk-DKfMY1Hg" />
+                                                <!-- Glassmorphism overlay card -->
+                                                <div
+                                                        class="absolute bottom-8 left-8 right-8 bg-surface/80 backdrop-blur-md p-6 rounded-2xl border border-white/40 shadow-lg flex items-center gap-4">
+                                                        <div
+                                                                class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+                                                                <span class="material-symbols-outlined"
+                                                                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                                        </div>
+                                                        <div>
+                                                                <p
+                                                                        class="font-label-caps text-label-caps text-primary uppercase mb-1">
+                                                                        Morning Flow Complete</p>
+                                                                <p class="font-body-md text-body-md text-on-surface">
+                                                                        You're starting the day with intention.</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- Soft background shapes -->
+                        <div
+                                class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] bg-primary-container/10 rounded-full blur-3xl pointer-events-none">
+                        </div>
+                        <div
+                                class="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] bg-secondary-container/20 rounded-full blur-3xl pointer-events-none">
+                        </div>
+                </section>
+                <!-- Features Bento Grid -->
+                <section class="py-section-padding bg-surface-container px-margin-page lg:px-0">
+                        <div class="max-w-7xl mx-auto">
+                                <div class="text-center mb-16 max-w-2xl mx-auto">
+                                        <h2 class="font-h2 text-h2 text-on-surface mb-4">A Soft Approach to Growth</h2>
+                                        <p class="font-body-md text-body-md text-on-surface-variant">Everything you need
+                                                to build lasting habits without the pressure.</p>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                                        <!-- Daily Flow (Spans 2 columns on larger screens) -->
+                                        <div
+                                                class="md:col-span-2 bg-surface rounded-3xl p-8 shadow-sm border border-surface-container-highest flex flex-col justify-between overflow-hidden relative group">
+                                                <div class="z-10">
+                                                        <div
+                                                                class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6">
+                                                                <span
+                                                                        class="material-symbols-outlined">water_drop</span>
+                                                        </div>
+                                                        <h3 class="font-h2 text-h2 text-on-surface mb-2">Daily Flow</h3>
+                                                        <p
+                                                                class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                                                                Gentle, daily reminders to hydrate, stretch, and
+                                                                breathe. Track your essential rhythms with our organic
+                                                                circle checks.</p>
+                                                </div>
+                                                <div
+                                                        class="absolute right-0 bottom-0 w-1/2 h-4/5 translate-x-8 translate-y-8 bg-surface-container-lowest rounded-tl-3xl shadow-lg border border-surface-container-highest p-4 flex flex-col gap-3 group-hover:-translate-y-2 transition-transform duration-500">
+                                                        <!-- Mock Habit Item 1 -->
+                                                        <div
+                                                                class="flex items-center justify-between p-3 rounded-xl border border-primary/20 bg-primary/5">
+                                                                <div class="flex items-center gap-3">
+                                                                        <div
+                                                                                class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary">
+                                                                                <span
+                                                                                        class="material-symbols-outlined text-sm">check</span>
+                                                                        </div>
+                                                                        <span
+                                                                                class="font-body-md text-body-md text-on-surface">Morning
+                                                                                Meditation</span>
+                                                                </div>
+                                                        </div>
+                                                        <!-- Mock Habit Item 2 -->
+                                                        <div
+                                                                class="flex items-center justify-between p-3 rounded-xl border border-surface-variant bg-surface">
+                                                                <div class="flex items-center gap-3">
+                                                                        <div
+                                                                                class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center">
+                                                                        </div>
+                                                                        <span
+                                                                                class="font-body-md text-body-md text-on-surface">Drink
+                                                                                8oz Water</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <!-- Personal Insights -->
+                                        <div
+                                                class="bg-surface rounded-3xl p-8 shadow-sm border border-surface-container-highest flex flex-col relative overflow-hidden">
+                                                <div class="z-10">
+                                                        <div
+                                                                class="w-12 h-12 rounded-full bg-tertiary-container/30 flex items-center justify-center text-tertiary mb-6">
+                                                                <span class="material-symbols-outlined">insights</span>
+                                                        </div>
+                                                        <h3 class="font-h2 text-h2 text-on-surface mb-2">Gentle Insights
+                                                        </h3>
+                                                        <p class="font-body-md text-body-md text-on-surface-variant">
+                                                                Visualize your progress without judgement. See patterns
+                                                                over time.</p>
+                                                </div>
+                                                <!-- Abstract Progress Ring Graphic -->
+                                                <div
+                                                        class="absolute -bottom-8 -right-8 w-48 h-48 rounded-full border-[16px] border-tertiary-container/20 flex items-center justify-center">
+                                                        <div class="w-32 h-32 rounded-full border-[12px] border-tertiary opacity-80"
+                                                                style="clip-path: polygon(0 0, 100% 0, 100% 70%, 0 70%);">
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <!-- Discovery Journeys -->
+                                        <div
+                                                class="md:col-span-3 bg-surface rounded-3xl p-8 shadow-sm border border-surface-container-highest flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+                                                <div class="md:w-1/2 z-10">
+                                                        <div
+                                                                class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary mb-6">
+                                                                <span class="material-symbols-outlined">explore</span>
+                                                        </div>
+                                                        <h3 class="font-h2 text-h2 text-on-surface mb-4">Discovery
+                                                                Journeys</h3>
+                                                        <p
+                                                                class="font-body-md text-body-md text-on-surface-variant mb-6">
+                                                                Guided paths focusing on specific areas of well-being.
+                                                                From 'Digital Detox' to 'Deep Sleep Prep', find the
+                                                                journey that calls to you.</p>
+                                                        <div class="flex gap-2 flex-wrap">
+                                                                <span
+                                                                        class="px-3 py-1 rounded-full bg-tertiary-container/20 text-tertiary font-label-caps text-label-caps uppercase">Sleep</span>
+                                                                <span
+                                                                        class="px-3 py-1 rounded-full bg-primary-container/20 text-primary font-label-caps text-label-caps uppercase">Detox</span>
+                                                                <span
+                                                                        class="px-3 py-1 rounded-full bg-secondary-container/40 text-secondary font-label-caps text-label-caps uppercase">Mindfulness</span>
+                                                        </div>
+                                                </div>
+                                                <div
+                                                        class="md:w-1/2 relative w-full h-64 md:h-full rounded-2xl overflow-hidden">
+                                                        <img alt="Woman stretching in morning light"
+                                                                class="absolute inset-0 w-full h-full object-cover"
+                                                                data-alt="A serene image of a person stretching or doing yoga in a bright, sunlit room. Soft morning light streams through sheer curtains. The mood is calm, restorative, and peaceful. The color palette aligns with a light mode aesthetic, featuring soft whites, warm sunlight, and subtle natural greens."
+                                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCxodj6q5mX4ChdyCXx6e9cvAnieW8S8yASiFKgy-MRGklpq_ybMOYcMcUCcszZGIBzQywOy3-_aGAAiFV4gigDBF1xNiVXeZVzzSir1Y3hhzifwqi1uIAe1yCekt-AoipfmNhc6JD4J7fLHdRX-0vWocav56jrSXVIuN_A3hNbX9mNAdZ1zkLuWAcH8M7EqOrL1JVEnIpl-5vwk3gj-yimvliavefcwLT_NFtv2x7vuhtNILsLoo9aoBTWmOg70yPxKxg_h_DzF8" />
+                                                        <div
+                                                                class="absolute inset-0 bg-gradient-to-t from-surface/80 to-transparent flex items-end p-6">
+                                                                <div
+                                                                        class="bg-surface/90 backdrop-blur-sm p-4 rounded-xl w-full flex items-center justify-between">
+                                                                        <div>
+                                                                                <p
+                                                                                        class="font-h2 text-h2 text-on-surface text-lg">
+                                                                                        Deep Sleep Prep</p>
+                                                                                <p
+                                                                                        class="font-body-md text-body-md text-on-surface-variant text-sm">
+                                                                                        14-day journey</p>
+                                                                        </div>
+                                                                        <span
+                                                                                class="material-symbols-outlined text-primary">play_circle</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+        </main>
+        <!-- Bottom Navigation (Mobile) -->
+        <nav
+                class="md:hidden bg-white/80 dark:bg-stone-900/80 backdrop-blur-md font-['Plus_Jakarta_Sans'] text-[11px] font-medium fixed bottom-0 w-full rounded-t-[32px] border-t border-stone-100 dark:border-stone-800 shadow-[0_-8px_24px_-10px_rgba(125,170,146,0.2)] fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3">
+                <a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#7DAA92] transition-colors active:scale-90 transition-transform duration-150"
+                        href="#">
+                        <span class="material-symbols-outlined mb-1">home_max</span>
+                        Home
+                </a>
+                <a class="flex flex-col items-center justify-center text-[#7DAA92] dark:text-[#9DC3AE] bg-[#7DAA92]/10 rounded-full px-4 py-1 hover:text-[#7DAA92] transition-colors active:scale-90 transition-transform duration-150"
+                        href="#">
+                        <span class="material-symbols-outlined mb-1"
+                                style="font-variation-settings: 'FILL' 1;">explore</span>
+                        Explore
+                </a>
+                <a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#7DAA92] transition-colors active:scale-90 transition-transform duration-150"
+                        href="#">
+                        <span class="material-symbols-outlined mb-1">analytics</span>
+                        Insights
+                </a>
+                <a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-[#7DAA92] transition-colors active:scale-90 transition-transform duration-150"
+                        href="#">
+                        <span class="material-symbols-outlined mb-1">person</span>
+                        Profile
+                </a>
+        </nav>
+        <!-- Footer Space for mobile nav -->
+        <div class="h-24 md:hidden bg-surface-container"></div>
+</body>
+
+</html>
