@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Roote — Join the Waitlist</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Lexend:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+:root {
+  --green: #3c6752;
+  --sage: #7daa92;
+  --mint: #beedd3;
+  --mint-dim: #a2d1b7;
+  --bark: #2f312e;
+  --bark-mid: #3d4039;
+  --cream: #faf9f5;
+  --sand: #e3e2df;
+  --amber: #ffe17a;
+  --text: #1b1c1a;
+  --muted: #717973;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bark);
+  color: var(--cream);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Grain overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+}
+
+/* ── Organic blob bg ── */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.blob-1 { width: 600px; height: 600px; background: var(--green); top: -100px; right: -150px; }
+.blob-2 { width: 400px; height: 400px; background: var(--sage); bottom: 100px; left: -100px; }
+.blob-3 { width: 300px; height: 300px; background: var(--amber); top: 50%; left: 40%; }
+
+/* ── Layout ── */
+.wrap { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ── */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  padding: 20px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  background: rgba(47,49,46,0.7);
+  margin: 0 -24px; padding: 20px 24px;
+}
+.nav-cta {
+  background: var(--mint); color: var(--bark);
+  font-family: 'Lexend', sans-serif; font-size: 12px; font-weight: 600;
+  padding: 10px 20px; border-radius: 999px; text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--mint-dim); transform: scale(1.02); }
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+}
+
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(125,170,146,0.15);
+  border: 1px solid rgba(125,170,146,0.3);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: 'Lexend', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s ease both;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sage);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero-logo {
+  margin-bottom: 40px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.hero-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(36px, 8vw, 62px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.hero-headline em {
+  font-style: normal;
+  color: var(--mint);
+}
+
+.hero-sub {
+  font-size: 17px; font-weight: 300;
+  color: rgba(250,249,245,0.65);
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+/* ── Form ── */
+.form-wrap {
+  width: 100%; max-width: 460px;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.form-row {
+  display: flex; gap: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 6px 6px 6px 22px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-row:focus-within {
+  border-color: var(--sage);
+  background: rgba(255,255,255,0.09);
+}
+.form-row input {
+  flex: 1;
+  background: none; border: none; outline: none;
+  color: var(--cream);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px; font-weight: 400;
+  padding: 10px 0;
+  min-width: 0;
+}
+.form-row input::placeholder { color: rgba(250,249,245,0.35); }
+.form-btn {
+  background: var(--green);
+  color: #fff;
+  font-family: 'Lexend', sans-serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.03em;
+  border: none; cursor: pointer;
+  padding: 12px 24px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.form-btn:hover { background: #2f5241; transform: scale(1.02); }
+.form-btn:active { transform: scale(0.98); }
+
+.form-note {
+  margin-top: 14px;
+  font-size: 12px; color: rgba(250,249,245,0.4);
+  text-align: center;
+}
+
+/* ── Success state ── */
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 20px 28px;
+  background: rgba(125,170,146,0.12);
+  border: 1.5px solid rgba(125,170,146,0.3);
+  border-radius: 20px;
+  animation: fadeUp 0.4s ease both;
+}
+.success-msg.show { display: block; }
+.success-icon {
+  font-size: 32px; margin-bottom: 8px;
+}
+.success-title {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: 22px; color: var(--mint); margin-bottom: 6px;
+}
+.success-sub { font-size: 14px; color: rgba(250,249,245,0.6); line-height: 1.6; }
+
+/* ── Social proof ── */
+.social-proof {
+  margin-top: 32px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  animation: fadeUp 0.6s ease 0.5s both;
+}
+.avatars { display: flex; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--bark);
+  margin-left: -8px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+}
+.avatar:first-child { margin-left: 0; }
+.a1 { background: var(--sage); color: var(--bark); }
+.a2 { background: var(--mint-dim); color: var(--bark); }
+.a3 { background: var(--amber); color: #554500; }
+.a4 { background: rgba(125,170,146,0.4); color: var(--mint); }
+.social-text { font-size: 13px; color: rgba(250,249,245,0.5); }
+.social-text strong { color: rgba(250,249,245,0.8); font-weight: 600; }
+
+/* ── Divider ── */
+.divider {
+  margin: 70px 0;
+  display: flex; align-items: center; gap: 16px;
+}
+.divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+.divider-leaf { color: var(--sage); font-size: 16px; opacity: 0.6; }
+
+/* ── Features ── */
+.features-label {
+  text-align: center; margin-bottom: 40px;
+  font-family: 'Lexend', sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.features { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.feature-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 24px;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.feature-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(125,170,146,0.25);
+  transform: translateY(-2px);
+}
+.feature-card.wide { grid-column: 1 / -1; }
+.feature-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px; font-size: 18px;
+}
+.fi-green { background: rgba(60,103,82,0.4); }
+.fi-amber { background: rgba(255,221,103,0.15); }
+.fi-teal { background: rgba(36,101,126,0.35); }
+.fi-sage { background: rgba(125,170,146,0.2); }
+.feature-title {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: 18px; color: var(--cream); margin-bottom: 6px;
+}
+.feature-desc { font-size: 13px; color: rgba(250,249,245,0.5); line-height: 1.7; }
+
+/* ── Pillars ── */
+.pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 8px; margin-top: 8px;
+}
+.pillar {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 16px 12px;
+  text-align: center;
+}
+.pillar-label {
+  font-family: 'Lexend', sans-serif;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 6px;
+}
+.pillar-val { font-size: 22px; font-weight: 700; color: var(--mint); }
+.pillar-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+/* ── Quote ── */
+.quote-section {
+  margin: 60px 0;
+  text-align: center;
+}
+.quote-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic; font-weight: 300;
+  font-size: clamp(22px, 5vw, 34px);
+  line-height: 1.4;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.quote-attr {
+  font-size: 13px; color: rgba(250,249,245,0.4);
+  font-family: 'Lexend', sans-serif; letter-spacing: 0.06em;
+}
+
+/* ── Bottom CTA ── */
+.bottom-cta {
+  text-align: center;
+  padding: 60px 0 80px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.bottom-title {
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
+  font-size: clamp(28px, 6vw, 44px);
+  line-height: 1.2; color: var(--cream);
+  margin-bottom: 12px;
+}
+.bottom-title span { color: var(--mint); }
+.bottom-sub {
+  font-size: 15px; color: rgba(250,249,245,0.5);
+  margin-bottom: 36px; line-height: 1.6;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--sage); }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 520px) {
+  .features { grid-template-columns: 1fr; }
+  .feature-card.wide { grid-column: auto; }
+  .pillars { grid-template-columns: repeat(3,1fr); }
+  .form-row { flex-direction: column; border-radius: 16px; padding: 16px; gap: 10px; }
+  .form-btn { width: 100%; padding: 14px; border-radius: 12px; }
+  nav { flex-wrap: wrap; gap: 10px; }
+}
+</style>
+</head>
+
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="wrap">
+
+  <!-- ── NAV ── -->
+  <nav>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="100 60 290 100" style="height:22px;width:auto;display:block;">
+      <g>
+        <path fill="#beedd3" d="M134.1,109l2.58-2.7c1.68.96,3.72,1.82,6.12,2.58,2.4.76,5.08,1.14,8.04,1.14,5,0,9.34-.88,13.02-2.64,3.68-1.76,6.68-4.23,9-7.41,2.32-3.18,3.9-6.89,4.74-11.13,1.04-5.2.86-9.58-.54-13.14-1.4-3.56-3.72-6.26-6.96-8.1-3.24-1.84-7.12-2.76-11.64-2.76-3.44,0-5.85.44-7.23,1.32-1.38.88-2.35,2.28-2.91,4.2-.4,1.72-.96,3.99-1.68,6.81-.72,2.82-1.56,6.01-2.52,9.57-.96,3.56-1.98,7.3-3.06,11.22-1.08,3.92-2.15,7.85-3.21,11.79-1.06,3.94-2.05,7.68-2.97,11.22-.92,3.54-1.72,6.71-2.4,9.51-.68,2.8-1.16,5.02-1.44,6.66-.36,1.32-.33,2.34.09,3.06s1.05,1.16,1.89,1.32l3.9.72c.72.16,1.26.38,1.62.66.36.28.54.64.54,1.08,0,.56-.25.99-.75,1.29-.5.3-1.17.45-2.01.45h-23.64c-.76,0-1.3-.15-1.62-.45-.32-.3-.48-.67-.48-1.11,0-.56.23-1,.69-1.32.46-.32,1.13-.54,2.01-.66l3.24-.48c1.4-.2,2.55-.64,3.45-1.32.9-.68,1.61-1.74,2.13-3.18.4-1.6.98-3.8,1.74-6.6.76-2.8,1.63-5.98,2.61-9.54.98-3.56,2.01-7.33,3.09-11.31,1.08-3.98,2.14-7.95,3.18-11.91s2.03-7.73,2.97-11.31c.94-3.58,1.75-6.8,2.43-9.66.68-2.86,1.14-5.13,1.38-6.81.24-1.28.22-2.23-.06-2.85-.28-.62-1-1.05-2.16-1.29l-3.9-.72c-.76-.2-1.28-.44-1.56-.72-.28-.28-.42-.62-.42-1.02,0-.52.23-.94.69-1.26.46-.32,1.11-.48,1.95-.48h26.04c6.04,0,11.23,1.14,15.57,3.42,4.34,2.28,7.49,5.52,9.45,9.72,1.96,4.2,2.34,9.2,1.14,15-.92,4.56-2.9,8.59-5.94,12.09-3.04,3.5-6.97,6.24-11.79,8.22-4.82,1.98-10.31,3.01-16.47,3.09-3.72.04-7.09-.34-10.11-1.14-3.02-.8-5.63-1.84-7.83-3.12ZM152.94,112.24l8.22-1.2,6.9,21.36c.68,2.32,1.35,4.11,2.01,5.37.66,1.26,1.33,2.11,2.01,2.55.68.44,1.4.66,2.16.66.84,0,1.57-.18,2.19-.54.62-.36,1.19-.92,1.71-1.68.24-.32.58-.54,1.02-.66.44-.12.82-.12,1.14,0,.44.16.72.48.84.96s.02.98-.3,1.5c-.8,1.88-2.14,3.42-4.02,4.62-1.88,1.2-4.08,1.8-6.6,1.8-1.48,0-2.84-.34-4.08-1.02-1.24-.68-2.38-1.88-3.42-3.6-1.04-1.72-2-4.14-2.88-7.26l-6.9-22.86Z"/>
+        <path fill="#beedd3" d="M221.15,90.16c4.28.16,7.96,1.35,11.04,3.57,3.08,2.22,5.29,5.33,6.63,9.33,1.34,4,1.51,8.84.51,14.52-.8,4.32-2.21,8.3-4.23,11.94-2.02,3.64-4.51,6.79-7.47,9.45-2.96,2.66-6.22,4.68-9.78,6.06-3.56,1.38-7.28,1.97-11.16,1.77-4.12-.2-7.69-1.39-10.71-3.57-3.02-2.18-5.17-5.29-6.45-9.33-1.28-4.04-1.44-8.88-.48-14.52.8-4.32,2.2-8.3,4.2-11.94,2-3.64,4.44-6.78,7.32-9.42,2.88-2.64,6.07-4.65,9.57-6.03,3.5-1.38,7.17-1.99,11.01-1.83ZM207.35,143.08c2.04.16,4.04-.11,6-.81,1.96-.7,3.83-1.76,5.61-3.18,1.78-1.42,3.41-3.2,4.89-5.34,1.48-2.14,2.78-4.59,3.9-7.35,1.12-2.76,1.98-5.8,2.58-9.12,1-5.12,1.2-9.37.6-12.75-.6-3.38-1.8-5.94-3.6-7.68-1.8-1.74-4.1-2.71-6.9-2.91-2-.16-3.95.1-5.85.78-1.9.68-3.71,1.74-5.43,3.18s-3.31,3.22-4.77,5.34c-1.46,2.12-2.73,4.56-3.81,7.32-1.08,2.76-1.92,5.8-2.52,9.12-1,5.12-1.22,9.37-.66,12.75.56,3.38,1.71,5.94,3.45,7.68,1.74,1.74,3.91,2.73,6.51,2.97Z"/>
+        <path fill="#beedd3" d="M279.35,90.16c4.28.16,7.96,1.35,11.04,3.57,3.08,2.22,5.29,5.33,6.63,9.33,1.34,4,1.51,8.84.51,14.52-.8,4.32-2.21,8.3-4.23,11.94-2.02,3.64-4.51,6.79-7.47,9.45-2.96,2.66-6.22,4.68-9.78,6.06-3.56,1.38-7.28,1.97-11.16,1.77-4.12-.2-7.69-1.39-10.71-3.57-3.02-2.18-5.17-5.29-6.45-9.33-1.28-4.04-1.44-8.88-.48-14.52.8-4.32,2.2-8.3,4.2-11.94,2-3.64,4.44-6.78,7.32-9.42,2.88-2.64,6.07-4.65,9.57-6.03,3.5-1.38,7.17-1.99,11.01-1.83ZM265.55,143.08c2.04.16,4.04-.11,6-.81,1.96-.7,3.83-1.76,5.61-3.18,1.78-1.42,3.41-3.2,4.89-5.34,1.48-2.14,2.78-4.59,3.9-7.35,1.12-2.76,1.98-5.8,2.58-9.12,1-5.12,1.2-9.37.6-12.75-.6-3.38-1.8-5.94-3.6-7.68-1.8-1.74-4.1-2.71-6.9-2.91-2-.16-3.95.1-5.85.78-1.9.68-3.71,1.74-5.43,3.18-1.72,1.44-3.31,3.22-4.77,5.34-1.46,2.12-2.73,4.56-3.81,7.32-1.08,2.76-1.92,5.8-2.52,9.12-1,5.12-1.22,9.37-.66,12.75.56,3.38,1.71,5.94,3.45,7.68,1.74,1.74,3.91,2.73,6.51,2.97Z"/>
+        <path fill="#beedd3" d="M315.41,96.16l-5.4-.9c-.56-.16-.99-.4-1.29-.72-.3-.32-.45-.68-.45-1.08,0-.56.22-.99.66-1.29.44-.3,1.06-.45,1.86-.45h6.18c.72,0,1.34-.14,1.86-.42.52-.28.98-.68,1.38-1.2l5.4-8.58c.36-.56.76-.93,1.2-1.11.44-.18.9-.27,1.38-.27.52,0,.92.13,1.2.39.28.26.42.69.42,1.29,0,.36-.06.83-.18,1.41-.12.58-.3,1.25-.54,2.01l-13.92,44.46c-1.44,4.56-1.82,7.55-1.14,8.97.68,1.42,2.18,2.13,4.5,2.13,2.08,0,4.02-.44,5.82-1.32,1.8-.88,3.66-2.4,5.58-4.56.4-.4.73-.68.99-.84.26-.16.55-.24.87-.24.36,0,.64.12.84.36.2.24.28.56.24.96-.04,1.04-.57,2.23-1.59,3.57-1.02,1.34-2.4,2.62-4.14,3.84-1.74,1.22-3.74,2.23-6,3.03-2.26.8-4.69,1.2-7.29,1.2-2.84,0-4.95-.59-6.33-1.77s-2.13-2.87-2.25-5.07c-.12-2.2.32-4.86,1.32-7.98l9.72-30.72c.6-1.84.83-3.1.69-3.78-.14-.68-.67-1.12-1.59-1.32ZM321.71,95.62l1.26-3.84h17.1c1.2,0,1.8.48,1.8,1.44,0,.76-.35,1.35-1.05,1.77s-1.67.63-2.91.63h-16.2Z"/>
+        <path fill="#beedd3" d="M345.71,121.12c3.04-1.24,5.81-2.37,8.31-3.39,2.5-1.02,5.19-2.12,8.07-3.3,2.88-1.18,5.71-2.35,8.49-3.51,2.78-1.16,5.23-2.16,7.35-3l-1.08,1.68c.24-.76.43-1.61.57-2.55.14-.94.21-2.07.21-3.39,0-2.88-.67-5.28-2.01-7.2-1.34-1.92-3.07-2.88-5.19-2.88s-4.41.8-6.75,2.4c-2.34,1.6-4.54,3.79-6.6,6.57-2.06,2.78-3.78,6-5.16,9.66-1.38,3.66-2.19,7.57-2.43,11.73-.36,5.96.64,10.42,3,13.38,2.36,2.96,5.6,4.44,9.72,4.44,2.6,0,5.16-.51,7.68-1.53,2.52-1.02,4.77-2.54,6.75-4.56,1.98-2.02,3.43-4.49,4.35-7.41.36-.68.7-1.15,1.02-1.41.32-.26.68-.37,1.08-.33.48,0,.86.2,1.14.6.28.4.32,1.04.12,1.92-.44,2.96-1.76,5.8-3.96,8.52-2.2,2.72-5.15,4.94-8.85,6.66-3.7,1.72-8.07,2.58-13.11,2.58-3.96,0-7.29-.8-9.99-2.4-2.7-1.6-4.69-3.9-5.97-6.9-1.28-3-1.82-6.62-1.62-10.86.28-4.8,1.34-9.38,3.18-13.74,1.84-4.36,4.24-8.25,7.2-11.67,2.96-3.42,6.28-6.12,9.96-8.1,3.68-1.98,7.48-2.97,11.4-2.97,2.72,0,5.04.58,6.96,1.74,1.92,1.16,3.39,2.72,4.41,4.68,1.02,1.96,1.57,4.12,1.65,6.48.04.48.2.87.48,1.17.28.3.66.41,1.14.33.56-.12.98-.07,1.26.15.28.22.42.53.42.93,0,.52-.23.99-.69,1.41-.46.42-1.37.89-2.73,1.41-1.52.64-3.53,1.46-6.03,2.46-2.5,1-5.23,2.09-8.19,3.27-2.96,1.18-5.92,2.36-8.88,3.54-2.96,1.18-5.67,2.26-8.13,3.24-2.46.98-5.17,2.07-8.13,3.27l-.42-3.12Z"/>
+      </g>
+    </svg>
+    <a class="nav-cta" href="#waitlist">Join Waitlist</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="top">
+
+    <div class="badge">
+      <div class="badge-dot"></div>
+      Launching Soon
+    </div>
+
+    <div class="hero-logo">
+      <svg style="width:240px;max-width:85vw;" id="Wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 499.49 249.74">
+        <g>
+          <path fill="#beedd3" d="M134.1,109l2.58-2.7c1.68.96,3.72,1.82,6.12,2.58,2.4.76,5.08,1.14,8.04,1.14,5,0,9.34-.88,13.02-2.64,3.68-1.76,6.68-4.23,9-7.41,2.32-3.18,3.9-6.89,4.74-11.13,1.04-5.2.86-9.58-.54-13.14-1.4-3.56-3.72-6.26-6.96-8.1-3.24-1.84-7.12-2.76-11.64-2.76-3.44,0-5.85.44-7.23,1.32-1.38.88-2.35,2.28-2.91,4.2-.4,1.72-.96,3.99-1.68,6.81-.72,2.82-1.56,6.01-2.52,9.57-.96,3.56-1.98,7.3-3.06,11.22-1.08,3.92-2.15,7.85-3.21,11.79-1.06,3.94-2.05,7.68-2.97,11.22-.92,3.54-1.72,6.71-2.4,9.51-.68,2.8-1.16,5.02-1.44,6.66-.36,1.32-.33,2.34.09,3.06s1.05,1.16,1.89,1.32l3.9.72c.72.16,1.26.38,1.62.66.36.28.54.64.54,1.08,0,.56-.25.99-.75,1.29-.5.3-1.17.45-2.01.45h-23.64c-.76,0-1.3-.15-1.62-.45-.32-.3-.48-.67-.48-1.11,0-.56.23-1,.69-1.32.46-.32,1.13-.54,2.01-.66l3.24-.48c1.4-.2,2.55-.64,3.45-1.32.9-.68,1.61-1.74,2.13-3.18.4-1.6.98-3.8,1.74-6.6.76-2.8,1.63-5.98,2.61-9.54.98-3.56,2.01-7.33,3.09-11.31,1.08-3.98,2.14-7.95,3.18-11.91s2.03-7.73,2.97-11.31c.94-3.58,1.75-6.8,2.43-9.66.68-2.86,1.14-5.13,1.38-6.81.24-1.28.22-2.23-.06-2.85-.28-.62-1-1.05-2.16-1.29l-3.9-.72c-.76-.2-1.28-.44-1.56-.72-.28-.28-.42-.62-.42-1.02,0-.52.23-.94.69-1.26.46-.32,1.11-.48,1.95-.48h26.04c6.04,0,11.23,1.14,15.57,3.42,4.34,2.28,7.49,5.52,9.45,9.72,1.96,4.2,2.34,9.2,1.14,15-.92,4.56-2.9,8.59-5.94,12.09-3.04,3.5-6.97,6.24-11.79,8.22-4.82,1.98-10.31,3.01-16.47,3.09-3.72.04-7.09-.34-10.11-1.14-3.02-.8-5.63-1.84-7.83-3.12ZM152.94,112.24l8.22-1.2,6.9,21.36c.68,2.32,1.35,4.11,2.01,5.37.66,1.26,1.33,2.11,2.01,2.55.68.44,1.4.66,2.16.66.84,0,1.57-.18,2.19-.54.62-.36,1.19-.92,1.71-1.68.24-.32.58-.54,1.02-.66.44-.12.82-.12,1.14,0,.44.16.72.48.84.96s.02.98-.3,1.5c-.8,1.88-2.14,3.42-4.02,4.62-1.88,1.2-4.08,1.8-6.6,1.8-1.48,0-2.84-.34-4.08-1.02-1.24-.68-2.38-1.88-3.42-3.6-1.04-1.72-2-4.14-2.88-7.26l-6.9-22.86Z"/>
+          <path fill="#beedd3" d="M221.15,90.16c4.28.16,7.96,1.35,11.04,3.57,3.08,2.22,5.29,5.33,6.63,9.33,1.34,4,1.51,8.84.51,14.52-.8,4.32-2.21,8.3-4.23,11.94-2.02,3.64-4.51,6.79-7.47,9.45-2.96,2.66-6.22,4.68-9.78,6.06-3.56,1.38-7.28,1.97-11.16,1.77-4.12-.2-7.69-1.39-10.71-3.57-3.02-2.18-5.17-5.29-6.45-9.33-1.28-4.04-1.44-8.88-.48-14.52.8-4.32,2.2-8.3,4.2-11.94,2-3.64,4.44-6.78,7.32-9.42,2.88-2.64,6.07-4.65,9.57-6.03,3.5-1.38,7.17-1.99,11.01-1.83ZM207.35,143.08c2.04.16,4.04-.11,6-.81,1.96-.7,3.83-1.76,5.61-3.18,1.78-1.42,3.41-3.2,4.89-5.34,1.48-2.14,2.78-4.59,3.9-7.35,1.12-2.76,1.98-5.8,2.58-9.12,1-5.12,1.2-9.37.6-12.75-.6-3.38-1.8-5.94-3.6-7.68-1.8-1.74-4.1-2.71-6.9-2.91-2-.16-3.95.1-5.85.78-1.9.68-3.71,1.74-5.43,3.18s-3.31,3.22-4.77,5.34c-1.46,2.12-2.73,4.56-3.81,7.32-1.08,2.76-1.92,5.8-2.52,9.12-1,5.12-1.22,9.37-.66,12.75.56,3.38,1.71,5.94,3.45,7.68,1.74,1.74,3.91,2.73,6.51,2.97Z"/>
+          <path fill="#beedd3" d="M279.35,90.16c4.28.16,7.96,1.35,11.04,3.57,3.08,2.22,5.29,5.33,6.63,9.33,1.34,4,1.51,8.84.51,14.52-.8,4.32-2.21,8.3-4.23,11.94-2.02,3.64-4.51,6.79-7.47,9.45-2.96,2.66-6.22,4.68-9.78,6.06-3.56,1.38-7.28,1.97-11.16,1.77-4.12-.2-7.69-1.39-10.71-3.57-3.02-2.18-5.17-5.29-6.45-9.33-1.28-4.04-1.44-8.88-.48-14.52.8-4.32,2.2-8.3,4.2-11.94,2-3.64,4.44-6.78,7.32-9.42,2.88-2.64,6.07-4.65,9.57-6.03,3.5-1.38,7.17-1.99,11.01-1.83ZM265.55,143.08c2.04.16,4.04-.11,6-.81,1.96-.7,3.83-1.76,5.61-3.18,1.78-1.42,3.41-3.2,4.89-5.34,1.48-2.14,2.78-4.59,3.9-7.35,1.12-2.76,1.98-5.8,2.58-9.12,1-5.12,1.2-9.37.6-12.75-.6-3.38-1.8-5.94-3.6-7.68-1.8-1.74-4.1-2.71-6.9-2.91-2-.16-3.95.1-5.85.78-1.9.68-3.71,1.74-5.43,3.18-1.72,1.44-3.31,3.22-4.77,5.34-1.46,2.12-2.73,4.56-3.81,7.32-1.08,2.76-1.92,5.8-2.52,9.12-1,5.12-1.22,9.37-.66,12.75.56,3.38,1.71,5.94,3.45,7.68,1.74,1.74,3.91,2.73,6.51,2.97Z"/>
+          <path fill="#beedd3" d="M315.41,96.16l-5.4-.9c-.56-.16-.99-.4-1.29-.72-.3-.32-.45-.68-.45-1.08,0-.56.22-.99.66-1.29.44-.3,1.06-.45,1.86-.45h6.18c.72,0,1.34-.14,1.86-.42.52-.28.98-.68,1.38-1.2l5.4-8.58c.36-.56.76-.93,1.2-1.11.44-.18.9-.27,1.38-.27.52,0,.92.13,1.2.39.28.26.42.69.42,1.29,0,.36-.06.83-.18,1.41-.12.58-.3,1.25-.54,2.01l-13.92,44.46c-1.44,4.56-1.82,7.55-1.14,8.97.68,1.42,2.18,2.13,4.5,2.13,2.08,0,4.02-.44,5.82-1.32,1.8-.88,3.66-2.4,5.58-4.56.4-.4.73-.68.99-.84.26-.16.55-.24.87-.24.36,0,.64.12.84.36.2.24.28.56.24.96-.04,1.04-.57,2.23-1.59,3.57-1.02,1.34-2.4,2.62-4.14,3.84-1.74,1.22-3.74,2.23-6,3.03-2.26.8-4.69,1.2-7.29,1.2-2.84,0-4.95-.59-6.33-1.77s-2.13-2.87-2.25-5.07c-.12-2.2.32-4.86,1.32-7.98l9.72-30.72c.6-1.84.83-3.1.69-3.78-.14-.68-.67-1.12-1.59-1.32ZM321.71,95.62l1.26-3.84h17.1c1.2,0,1.8.48,1.8,1.44,0,.76-.35,1.35-1.05,1.77s-1.67.63-2.91.63h-16.2Z"/>
+          <path fill="#beedd3" d="M345.71,121.12c3.04-1.24,5.81-2.37,8.31-3.39,2.5-1.02,5.19-2.12,8.07-3.3,2.88-1.18,5.71-2.35,8.49-3.51,2.78-1.16,5.23-2.16,7.35-3l-1.08,1.68c.24-.76.43-1.61.57-2.55.14-.94.21-2.07.21-3.39,0-2.88-.67-5.28-2.01-7.2-1.34-1.92-3.07-2.88-5.19-2.88s-4.41.8-6.75,2.4c-2.34,1.6-4.54,3.79-6.6,6.57-2.06,2.78-3.78,6-5.16,9.66-1.38,3.66-2.19,7.57-2.43,11.73-.36,5.96.64,10.42,3,13.38,2.36,2.96,5.6,4.44,9.72,4.44,2.6,0,5.16-.51,7.68-1.53,2.52-1.02,4.77-2.54,6.75-4.56,1.98-2.02,3.43-4.49,4.35-7.41.36-.68.7-1.15,1.02-1.41.32-.26.68-.37,1.08-.33.48,0,.86.2,1.14.6.28.4.32,1.04.12,1.92-.44,2.96-1.76,5.8-3.96,8.52-2.2,2.72-5.15,4.94-8.85,6.66-3.7,1.72-8.07,2.58-13.11,2.58-3.96,0-7.29-.8-9.99-2.4-2.7-1.6-4.69-3.9-5.97-6.9-1.28-3-1.82-6.62-1.62-10.86.28-4.8,1.34-9.38,3.18-13.74,1.84-4.36,4.24-8.25,7.2-11.67,2.96-3.42,6.28-6.12,9.96-8.1,3.68-1.98,7.48-2.97,11.4-2.97,2.72,0,5.04.58,6.96,1.74,1.92,1.16,3.39,2.72,4.41,4.68,1.02,1.96,1.57,4.12,1.65,6.48.04.48.2.87.48,1.17.28.3.66.41,1.14.33.56-.12.98-.07,1.26.15.28.22.42.53.42.93,0,.52-.23.99-.69,1.41-.46.42-1.37.89-2.73,1.41-1.52.64-3.53,1.46-6.03,2.46-2.5,1-5.23,2.09-8.19,3.27-2.96,1.18-5.92,2.36-8.88,3.54-2.96,1.18-5.67,2.26-8.13,3.24-2.46.98-5.17,2.07-8.13,3.27l-.42-3.12Z"/>
+        </g>
+        <g>
+          <path fill="#a2d1b7" d="M145.98,188.02c-.53,0-1.02-.08-1.48-.25s-.84-.4-1.16-.69-.57-.64-.73-1.03l1.22-.56c.13.35.38.66.75.9.37.25.83.37,1.38.37.43,0,.82-.08,1.17-.25.35-.16.63-.41.84-.73.21-.32.32-.71.32-1.17v-1.69l.22.25c-.26.51-.63.91-1.12,1.18s-1.03.41-1.62.41c-.7,0-1.33-.17-1.89-.5-.56-.33-1-.78-1.32-1.36s-.48-1.21-.48-1.91.16-1.35.48-1.92.76-1.02,1.32-1.35c.55-.33,1.19-.5,1.9-.5.59,0,1.12.13,1.6.4.48.27.86.63,1.15,1.1l-.18.35v-1.68h1.27v7.22c0,.65-.15,1.24-.46,1.75-.31.51-.73.92-1.28,1.21-.55.29-1.17.44-1.87.44ZM145.89,183.5c.45,0,.85-.11,1.21-.34.36-.22.65-.52.86-.9s.32-.8.32-1.27-.11-.88-.32-1.25-.5-.68-.86-.9c-.36-.22-.76-.34-1.21-.34s-.87.11-1.25.34c-.37.22-.67.52-.88.9s-.31.79-.31,1.26.1.89.31,1.27.5.68.87.9c.37.22.79.34,1.25.34Z"/>
+          <path fill="#a2d1b7" d="M160.43,184.94v-7.55h1.29v1.39l-.14-.2c.18-.43.45-.75.81-.96s.81-.31,1.33-.31h.46v1.25h-.66c-.53,0-.96.16-1.29.49s-.49.79-.49,1.4v4.49h-1.32Z"/>
+          <path fill="#a2d1b7" d="M177.76,185.11c-.72,0-1.37-.17-1.96-.51s-1.06-.81-1.41-1.41-.53-1.27-.53-2.03.17-1.43.52-2.02c.34-.59.81-1.05,1.4-1.4.59-.34,1.25-.52,1.97-.52s1.4.17,1.99.51c.59.34,1.05.8,1.39,1.39.34.59.51,1.26.51,2.03s-.18,1.44-.53,2.04c-.36.59-.82,1.06-1.41,1.4-.58.34-1.23.51-1.95.51ZM177.76,183.85c.48,0,.9-.12,1.28-.35.38-.23.68-.55.9-.97.22-.41.33-.87.33-1.37s-.11-.96-.33-1.36-.52-.72-.9-.95-.81-.35-1.28-.35-.89.12-1.27.35c-.38.23-.68.55-.9.95-.22.4-.34.85-.34,1.36s.11.96.34,1.37c.22.41.52.73.9.97.38.23.8.35,1.27.35Z"/>
+          <path fill="#a2d1b7" d="M193.79,184.94l-2.59-7.55h1.44l2.06,6.31h-.5s2.02-6.31,2.02-6.31h1.23l2.02,6.3h-.5s2.07-6.3,2.07-6.3h1.43l-2.59,7.55h-1.25l-1.99-6.3h.39l-1.99,6.3h-1.25Z"/>
+          <path fill="#a2d1b7" d="M227.21,185.11c-.73,0-1.38-.17-1.95-.52-.57-.35-1.02-.82-1.35-1.42-.33-.6-.49-1.28-.49-2.02s.16-1.43.49-2.02c.33-.59.77-1.05,1.32-1.39s1.18-.51,1.88-.51c.56,0,1.06.1,1.49.3.43.2.8.47,1.11.81s.54.73.7,1.16c.16.43.25.88.25,1.35,0,.11,0,.23-.02.35-.01.12-.03.24-.05.36h-6.19v-1.13h5.43l-.63.5c.09-.49.05-.92-.13-1.3-.18-.38-.44-.69-.78-.91-.35-.22-.74-.34-1.18-.34s-.84.11-1.2.34-.65.55-.85.96c-.2.41-.28.9-.25,1.47-.04.55.05,1.03.26,1.45s.51.74.9.97c.39.23.81.34,1.27.34.5,0,.93-.12,1.27-.35.35-.23.63-.53.84-.9l1.09.56c-.15.35-.38.66-.69.95-.31.28-.68.51-1.11.68-.43.17-.9.25-1.41.25Z"/>
+          <path fill="#a2d1b7" d="M243.14,184.94l-2.95-7.55h1.46l2.37,6.38h-.5l2.38-6.38h1.46l-2.97,7.55h-1.23Z"/>
+          <path fill="#a2d1b7" d="M260.69,185.11c-.73,0-1.38-.17-1.95-.52-.57-.35-1.02-.82-1.35-1.42-.33-.6-.49-1.28-.49-2.02s.16-1.43.49-2.02c.33-.59.77-1.05,1.32-1.39s1.18-.51,1.88-.51c.56,0,1.06.1,1.49.3.43.2.8.47,1.11.81s.54.73.7,1.16c.16.43.25.88.25,1.35,0,.11,0,.23-.02.35-.01.12-.03.24-.05.36h-6.19v-1.13h5.43l-.63.5c.09-.49.05-.92-.13-1.3-.18-.38-.44-.69-.78-.91-.35-.22-.74-.34-1.18-.34s-.84.11-1.2.34-.65.55-.85.96c-.2.41-.28.9-.25,1.47-.04.55.05,1.03.26,1.45s.51.74.9.97c.39.23.81.34,1.27.34.5,0,.93-.12,1.27-.35.35-.23.63-.53.84-.9l1.09.56c-.15.35-.38.66-.69.95-.31.28-.68.51-1.11.68-.43.17-.9.25-1.41.25Z"/>
+          <path fill="#a2d1b7" d="M274.64,184.94v-7.55h1.29v1.39l-.14-.2c.18-.43.45-.75.81-.96s.81-.31,1.33-.31h.46v1.25h-.66c-.53,0-.96.16-1.29.49s-.49.79-.49,1.4v4.49h-1.32Z"/>
+          <path fill="#a2d1b7" d="M288.81,188.02c-.17,0-.34-.01-.5-.04s-.33-.08-.48-.14v-1.16c.1.02.23.04.39.06.15.02.31.04.46.04.44,0,.77-.1,1-.29.23-.19.45-.52.65-.99l.48-1.13-.03,1.13-3.22-8.11h1.41l2.51,6.44h-.42l2.49-6.44h1.44l-3.4,8.44c-.16.4-.36.77-.61,1.11s-.55.6-.9.79-.77.29-1.26.29Z"/>
+          <path fill="#a2d1b7" d="M319.7,185.11c-.71,0-1.35-.17-1.92-.52-.57-.35-1.02-.82-1.34-1.41-.33-.6-.49-1.26-.49-2s.17-1.43.5-2.02c.33-.59.78-1.06,1.34-1.41.56-.34,1.2-.52,1.92-.52.62,0,1.18.13,1.67.4.49.27.87.62,1.15,1.07l-.21.32v-4.68h1.32v10.6h-1.27v-1.61l.17.22c-.26.5-.64.89-1.14,1.15-.5.27-1.06.4-1.67.4ZM319.81,183.85c.47,0,.89-.12,1.27-.35.38-.23.68-.55.9-.96.22-.41.33-.86.33-1.36s-.11-.97-.33-1.37-.52-.72-.9-.95-.8-.35-1.27-.35-.89.12-1.27.35-.67.55-.89.95-.32.86-.32,1.37.11.96.32,1.36c.21.41.51.73.88.96.37.23.8.35,1.27.35Z"/>
+          <path fill="#a2d1b7" d="M336.69,185.11c-.49,0-.93-.09-1.32-.27-.38-.18-.68-.43-.9-.76-.21-.32-.32-.69-.32-1.11s.09-.76.27-1.08c.18-.32.45-.6.82-.82.37-.22.83-.38,1.39-.48l2.79-.46v1.09l-2.49.43c-.49.08-.84.24-1.06.46s-.33.49-.33.82c0,.31.12.56.37.77.25.21.56.31.93.31.48,0,.89-.1,1.24-.3.35-.2.62-.47.82-.82.2-.35.29-.72.29-1.13v-1.93c0-.41-.15-.74-.45-1-.3-.26-.7-.38-1.19-.38-.43,0-.81.11-1.14.34-.33.22-.58.51-.74.87l-1.13-.59c.14-.35.36-.66.67-.93s.67-.49,1.08-.65c.41-.16.84-.24,1.29-.24.58,0,1.09.11,1.53.33.44.22.78.52,1.03.92.25.39.37.84.37,1.34v5.12h-1.27v-1.43l.24.1c-.16.29-.38.55-.65.78-.28.23-.59.41-.95.53-.36.13-.75.19-1.18.19Z"/>
+          <path fill="#a2d1b7" d="M351.78,188.02c-.17,0-.34-.01-.5-.04s-.33-.08-.48-.14v-1.16c.1.02.23.04.39.06.15.02.31.04.46.04.44,0,.77-.1,1-.29.23-.19.45-.52.65-.99l.48-1.13-.03,1.13-3.22-8.11h1.41l2.51,6.44h-.42l2.49-6.44h1.44l-3.4,8.44c-.16.4-.36.77-.61,1.11s-.55.6-.9.79-.77.29-1.26.29Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1 class="hero-headline">
+      Grow every day,<br/>
+      <em>at your own pace.</em>
+    </h1>
+
+    <p class="hero-sub">
+      A holistic habit tracker for your whole self — mind, body, and soul. No streaks to break. No guilt. Just gentle, daily rituals that actually stick.
+    </p>
+
+    <!-- ── WAITLIST FORM ── -->
+    <div class="form-wrap" id="waitlist">
+      <div class="form-row" id="form-row">
+        <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email"/>
+        <button class="form-btn" onclick="handleSignup()">Reserve My Spot →</button>
+      </div>
+      <p class="form-note">Free forever for founding members · No spam · Unsubscribe anytime</p>
+
+      <div class="success-msg" id="success-msg">
+        <div class="success-icon">🌿</div>
+        <div class="success-title">You're on the list.</div>
+        <div class="success-sub">We'll reach out before launch with early access.<br/>Thank you for growing with us.</div>
+      </div>
+    </div>
+
+    <!-- Social proof -->
+    <div class="social-proof">
+      <div class="avatars">
+        <div class="avatar a1">A</div>
+        <div class="avatar a2">M</div>
+        <div class="avatar a3">J</div>
+        <div class="avatar a4">+</div>
+      </div>
+      <span class="social-text">Joined by <strong>2,400+</strong> early members</span>
+    </div>
+
+  </section>
+
+  <!-- ── DIVIDER ── -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-leaf">✦</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- ── FEATURES ── -->
+  <p class="features-label">What you get with Roote</p>
+
+  <div class="features">
+    <div class="feature-card">
+      <div class="feature-icon fi-green">🌊</div>
+      <div class="feature-title">Daily Flow</div>
+      <div class="feature-desc">Gentle check-ins for hydration, movement, and rest. Track your rhythms without the pressure of streaks.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon fi-amber">✨</div>
+      <div class="feature-title">Gentle Insights</div>
+      <div class="feature-desc">See your patterns over time. Progress that celebrates consistency, not perfection.</div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon fi-teal">🧭</div>
+      <div class="feature-title">Discovery Journeys</div>
+      <div class="feature-desc">Guided programs for Deep Sleep, Mold Detox, Digital Sunset, and more — built by holistic practitioners.</div>
+    </div>
+
+    <div class="feature-card wide">
+      <div class="feature-icon fi-sage">🌱</div>
+      <div class="feature-title">Mind · Body · Soul</div>
+      <div class="feature-desc">Three pillars. One practice. Roote tracks the habits that matter most to your whole self — not just your steps.</div>
+      <div class="pillars" style="margin-top:18px;">
+        <div class="pillar">
+          <div class="pillar-label">Mind</div>
+          <div class="pillar-val">🧠</div>
+          <div class="pillar-sub">Mindfulness · Rest · Clarity</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">Body</div>
+          <div class="pillar-val">💧</div>
+          <div class="pillar-sub">Movement · Hydration · Sleep</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-label">Soul</div>
+          <div class="pillar-val">🌿</div>
+          <div class="pillar-sub">Ritual · Intention · Joy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── QUOTE ── -->
+  <div class="quote-section">
+    <div class="quote-text">
+      "Step away from hustle culture.<br/>Tend to yourself like a garden."
+    </div>
+    <div class="quote-attr">— The Roote Philosophy</div>
+  </div>
+
+  <!-- ── BOTTOM CTA ── -->
+  <div class="bottom-cta">
+    <div class="bottom-title">
+      Ready to <span>grow every day?</span>
+    </div>
+    <p class="bottom-sub">
+      Be among the first to experience Roote.<br/>Founding members get lifetime free access.
+    </p>
+
+    <div class="form-wrap" style="margin:0 auto; animation:none;">
+      <div class="form-row" id="form-row-2">
+        <input type="email" id="email-input-2" placeholder="your@email.com" autocomplete="email"/>
+        <button class="form-btn" onclick="handleSignup2()">Join the Waitlist →</button>
+      </div>
+      <p class="form-note">No credit card · No spam · Cancel anytime</p>
+
+      <div class="success-msg" id="success-msg-2">
+        <div class="success-icon">🌿</div>
+        <div class="success-title">You're on the list.</div>
+        <div class="success-sub">We'll reach out before launch with early access.<br/>Thank you for growing with us.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-copy">© 2025 Roote. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+function handleSignup() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').style.color = '#fca5a5';
+    document.getElementById('email-input').placeholder = 'Please enter a valid email';
+    setTimeout(() => {
+      document.getElementById('email-input').style.color = '';
+      document.getElementById('email-input').placeholder = 'your@email.com';
+    }, 2000);
+    return;
+  }
+  document.getElementById('form-row').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+  // TODO: Replace with your actual form endpoint (Mailchimp, ConvertKit, Formspree, etc.)
+  console.log('Waitlist signup:', email);
+}
+
+function handleSignup2() {
+  const email = document.getElementById('email-input-2').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input-2').style.color = '#fca5a5';
+    document.getElementById('email-input-2').placeholder = 'Please enter a valid email';
+    setTimeout(() => {
+      document.getElementById('email-input-2').style.color = '';
+      document.getElementById('email-input-2').placeholder = 'your@email.com';
+    }, 2000);
+    return;
+  }
+  document.getElementById('form-row-2').style.display = 'none';
+  document.getElementById('success-msg-2').classList.add('show');
+  console.log('Waitlist signup:', email);
+}
+
+// Allow Enter key to submit
+document.getElementById('email-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleSignup();
+});
+document.getElementById('email-input-2').addEventListener('keydown', e => {
+  if (e.key === 'Enter') handleSignup2();
+});
+</script>
+
+</body>
+</html>
